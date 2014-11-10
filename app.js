@@ -11,7 +11,7 @@ mongoose.connect('mongodb://localhost/crudtest');
 var routes = require('./routes/index');
 var users = require('./routes/user');
 
-var app = express();
+var app = exports.app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -26,6 +26,7 @@ app.use(bodyParser.urlencoded({
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+require('./routes/main.js');
 app.use('/', routes);
 app.use('/users', users);
 
