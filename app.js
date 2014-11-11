@@ -5,6 +5,8 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
+var session = require('express-session');
+var flash = require('connect-flash');
 
 mongoose.connect('mongodb://localhost/crudtest');
 
@@ -25,6 +27,8 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(session({secret: 'supersecret', saveUninitialized: true, resave: true}));
+app.use(flash());
 
 require('./routes/main.js');
 app.use('/', routes);
