@@ -7,11 +7,14 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var session = require('express-session');
 var flash = require('connect-flash');
+var fixtures = require('mongoose-fixtures');
 
 mongoose.connect('mongodb://localhost/crudtest');
 
 var routes = require('./routes/index');
 var users = require('./routes/user');
+
+fixtures.load('./fixtures/persons.js');
 
 var app = exports.app = express();
 
