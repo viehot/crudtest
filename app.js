@@ -14,7 +14,8 @@ mongoose.connect('mongodb://localhost/crudtest');
 var routes = require('./routes/index');
 var users = require('./routes/user');
 
-fixtures.load('./fixtures/persons.js');
+fixtures.load('./Users/Gerente/Documents/GitHub/crudtest/fixtures/admins.js');
+fixtures.load('./Users/Gerente/Documents/GitHub/crudtest/fixtures/persons.js');
 
 var app = exports.app = express();
 

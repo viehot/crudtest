@@ -1,5 +1,14 @@
 var app = module.parent.exports.app;
 var Persons = require('../models/persons.js');
+var Admins = require('../models/admin.js');
+
+app.get('/login', function(req, res){
+    res.render('login', { title: 'Login'});
+});
+
+app.post('/login', function(req, res){
+    res.json(req.body);
+});
 
 app.get('/list', function(req, res){
     var msg = req.flash('message');
