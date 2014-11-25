@@ -8,6 +8,7 @@ var mongoose = require('mongoose');
 var session = require('express-session');
 var flash = require('connect-flash');
 var fixtures = require('mongoose-fixtures');
+var passport = exports.passport = require('passport');
 
 mongoose.connect('mongodb://localhost/crudtest');
 
@@ -32,8 +33,11 @@ app.use(bodyParser.urlencoded({
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({secret: 'supersecret', saveUninitialized: true, resave: true}));
+app.use(passport.initialize());
+app.use(passport.session());
 app.use(flash());
 
+require('./auth/local-strategy.js');
 require('./routes/main.js');
 app.use('/', routes);
 app.use('/users', users);
