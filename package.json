@@ -17,6 +17,8 @@
     "mongoose": "^3.8.19",
     "mongoose-fixtures": "0.0.1",
     "morgan": "~1.1.1",
+    "passport": "^0.2.1",
+    "passport-local": "^1.0.0",
     "serve-favicon": "~2.0.1"
   },
   "devDependencies": {
