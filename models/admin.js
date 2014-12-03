@@ -9,7 +9,7 @@ var adminSchema = new Schema({
 
 adminSchema.pre("save", function(next) {
     if(this.isModified('password')) 
-        this.password = bcrypt.hashSync(this.password);
+        this.password = bcrypt.hashSync(this.password, bcrypt.genSaltSync(5));
     next();
 });
 
