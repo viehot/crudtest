@@ -22,6 +22,7 @@ passport.use('AdminLogin', new LocalStrategy(
         return done(null, false, { message: 'Incorrect username.' });
       }
       if (!adm.authenticate(password)) {
+        console.log("Fallo password");
         return done(null, false, { message: 'Incorrect password.' });
       }
       return done(null, adm);
